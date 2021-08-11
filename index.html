@@ -16,7 +16,7 @@
   <ul class="product-list"></ul>
   <hr>
   <h2>Add product</h2>
-  <form id="inputForm">
+  <form id="addForm">
     <div>
       <label for="name">Name: </label>
       <input type="text" name="name" id="name">
@@ -33,6 +33,28 @@
       <button type="submit">Save</button>
     </div>
   </form>
+  
+  <div class="hidden" id='edit-section'>
+    <h2>Edit product</h2>
+  <form id="editForm">
+    <input type="hidden" name="id">
+    <div>
+      <label for="name">Name: </label>
+      <input type="text" name="name" id="name">
+    </div>
+    <div>
+      <label for="brand">Brand: </label>
+      <input type="text" name="brand" id="brand">
+    </div>
+    <div>
+      <label for="price">Price: </label>
+      <input type="text" name="price" id="price">
+    </div>
+    <div>
+      <button type="submit">Save</button>
+    </div>
+  </form>
+  </div>
   
   <script src="js/main.js"></script>
 </body>

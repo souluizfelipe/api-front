@@ -188,7 +188,7 @@ body .add-product-btn {
   transition: opacity 200ms ease-in-out;
 }
 
-body:hover {
+body .add-product-btn:hover {
   opacity: 0.8;
 }
 /*# sourceMappingURL=style.css.map */

@@ -5,18 +5,21 @@ const Main = {
     this.getData();
     this.cacheSelectors();
     this.bindEvents();
-    Events.eventsCacheSelectors();
+    Click_Events.eventsCacheSelectors();
   },
   
   cacheSelectors: function () {
     this.$prodList = document.querySelector('.product-list');
     this.$addForm = document.querySelector('#addForm');
     this.$editForm = document.querySelector('#editForm');
+    this.$modalAddBtn = document.querySelector('.add-product-btn');
+    this.$addItemModal = document.querySelector('#addItemModal');
   },
 
   bindEvents: function() {
     this.$addForm.onsubmit = this.Events.addForm_submit.bind(this);
     this.$editForm.onsubmit = this.Events.editForm_submit.bind(this);
+    this.$modalAddBtn.onclick = Click_Events.modalAddBtn_click.bind(this);
   },
 
   getData: function () {
@@ -52,8 +55,8 @@ const Main = {
 
         this.$prodList.innerHTML = list;
 
-        Events.editBtn_click();
-        Events.removeBtn_click();
+        Click_Events.editBtn_click();
+        Click_Events.removeBtn_click();
         
       });
   },
@@ -88,6 +91,9 @@ const Main = {
           }
         })
       });
+
+      this.$addItemModal.classList.toggle('active-modal')
+      this.$addItemModal.classList.toggle('hidden')
   
     },
 
@@ -114,7 +120,7 @@ const Main = {
           if (data.message === 'success') {
             this.$editForm.reset();
             this.getData();
-            Events.$editSection.classList.add('hidden');
+            Click_Events.$editSection.classList.add('hidden');
             alert('produto editado com sucesso');
           } else {
             alert('Ops, algo de errado, tente novamente');
@@ -127,10 +133,17 @@ const Main = {
 };
 
 
-const Events = {
+const Click_Events = {
   eventsCacheSelectors: function(){
     this.$editSection = document.querySelector('#edit-section');
     this.$editBtn = document.querySelectorAll('.edit-button');
+  },
+
+  modalAddBtn_click: function (e) {
+    e.preventDefault();
+    this.$addItemModal.classList.toggle('hidden')
+    this.$addItemModal.classList.toggle('active-modal')
+
   },
   
   editBtn_click: function (e) {

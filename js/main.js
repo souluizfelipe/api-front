@@ -14,6 +14,7 @@ const Main = {
     this.$editForm = document.querySelector('#editForm');
     this.$modalAddBtn = document.querySelector('.add-product-btn');
     this.$addItemModal = document.querySelector('#addItemModal');
+    this.$editItemModal = document.querySelector('#editItemModal');
   },
 
   bindEvents: function() {
@@ -126,7 +127,9 @@ const Main = {
             alert('Ops, algo de errado, tente novamente');
           };
         });
-  
+      
+        this.$editItemModal.classList.toggle('hidden');
+        this.$editItemModal.classList.toggle('active-modal');
     },
 
   },
@@ -141,9 +144,8 @@ const Click_Events = {
 
   modalAddBtn_click: function (e) {
     e.preventDefault();
-    this.$addItemModal.classList.toggle('hidden')
-    this.$addItemModal.classList.toggle('active-modal')
-
+    this.$addItemModal.classList.toggle('hidden');
+    this.$addItemModal.classList.toggle('active-modal');
   },
   
   editBtn_click: function (e) {
@@ -152,7 +154,8 @@ const Click_Events = {
     editBtn.forEach(btn => {
       btn.onclick = function (e) {
         e.preventDefault();
-        Events.$editSection.classList.remove('hidden');
+        Main.$editItemModal.classList.toggle('hidden');
+        Main.$editItemModal.classList.toggle('active-modal');
 
         const id = this.dataset.id;
         const name = this.dataset.name;

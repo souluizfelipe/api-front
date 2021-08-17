@@ -33,7 +33,7 @@ const Main = {
 
         data.map(product => {
           return list += `
-            <li>
+            <li class="product-item">
               ${product.brand} - ${product.name} - $${product.price} -
               <a 
                 href="#" 

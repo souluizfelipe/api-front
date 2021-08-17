@@ -15,12 +15,14 @@ const Main = {
     this.$modalAddBtn = document.querySelector('.add-product-btn');
     this.$addItemModal = document.querySelector('#addItemModal');
     this.$editItemModal = document.querySelector('#editItemModal');
+    this.$cancelBtn = document.querySelector('.cancel-btn');
   },
-
+  
   bindEvents: function() {
     this.$addForm.onsubmit = this.Events.addForm_submit.bind(this);
     this.$editForm.onsubmit = this.Events.editForm_submit.bind(this);
     this.$modalAddBtn.onclick = Click_Events.modalAddBtn_click.bind(this);
+    this.$cancelBtn.onclick = Click_Events.cancelBtn_click.bind(this);
   },
 
   getData: function () {
@@ -93,8 +95,8 @@ const Main = {
         })
       });
 
-      this.$addItemModal.classList.toggle('active-modal')
-      this.$addItemModal.classList.toggle('hidden')
+      this.$addItemModal.classList.add('hidden')
+      this.$addItemModal.classList.remove('active-modal')
   
     },
 
@@ -128,8 +130,8 @@ const Main = {
           };
         });
       
-        this.$editItemModal.classList.toggle('hidden');
-        this.$editItemModal.classList.toggle('active-modal');
+        this.$editItemModal.classList.add('hidden');
+        this.$editItemModal.classList.remove('active-modal');
     },
 
   },
@@ -144,8 +146,8 @@ const Click_Events = {
 
   modalAddBtn_click: function (e) {
     e.preventDefault();
-    this.$addItemModal.classList.toggle('hidden');
-    this.$addItemModal.classList.toggle('active-modal');
+    this.$addItemModal.classList.remove('hidden');
+    this.$addItemModal.classList.add('active-modal');
   },
   
   editBtn_click: function (e) {
@@ -195,7 +197,19 @@ const Click_Events = {
 
       };
     });
-  }
+  },
+
+  cancelBtn_click: function (e) {
+    e.preventDefault();
+
+    this.$addItemModal.classList.add('hidden');
+    this.$addItemModal.classList.remove('active-modal');
+    this.$addForm.reset();
+    
+    this.$editItemModal.classList.add('hidden');
+    this.$editItemModal.classList.remove('active-modal');
+    this.$editForm.reset();
+  },
 };
 
 Main.init();

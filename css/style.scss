@@ -110,18 +110,31 @@ body {
         }
       }
 
-      button {
+      .form-btn {
         border: none;
-        // outline: none;
         padding: 16px 32px;
-        width: 200px;
+        width: 150px;        
         border-radius: 4px;
         font-size: 16px;
         font-weight: bold;
         color: var(--text-icons-color);
-        margin: 15px 0;
+        margin: 15px 5px;
         cursor: pointer;
         background-color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+      }
+      
+      .cancel-btn {
+        text-decoration: none;
+        border: 2px solid var(--primary-color);
+        background-color: var(--text-icons-color);
+        color: var(--primary-color);
+        opacity: 0.8;
+        transition: opacity 50ms ease-in-out ;
+
+        &:hover {
+          opacity: 1;
+        }
       }
 
     }

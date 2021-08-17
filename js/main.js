@@ -16,6 +16,7 @@ const Main = {
     this.$addItemModal = document.querySelector('#addItemModal');
     this.$editItemModal = document.querySelector('#editItemModal');
     this.$cancelBtn = document.querySelector('.cancel-btn');
+    this.$prodAddSuccess = document.querySelector('.prod-add-success');
   },
   
   bindEvents: function() {
@@ -86,18 +87,22 @@ const Main = {
       }).then(res => {
         res.json().then(data => {
           if (data.message === 'success') {
-            this.$addForm.reset()
-            Main.getData();
-            alert('Cadastro relizado com sucesso');
+            this.$addForm.reset();
+            this.$addItemModal.classList.add('hidden');
+
+            this.$prodAddSuccess.textContent = "Product successfully added"
+            
+            setTimeout(() => {
+              this.$prodAddSuccess.classList.remove('success-active');
+            }, 2000);
+
+            this.getData();
           } else {
             alert('Ops, deu algum erro, tente novamente');
           }
         })
       });
 
-      this.$addItemModal.classList.add('hidden')
-      this.$addItemModal.classList.remove('active-modal')
-  
     },
 
     editForm_submit: function (e) {
@@ -124,16 +129,18 @@ const Main = {
             this.$editForm.reset();
             this.getData();
             Click_Events.$editSection.classList.add('hidden');
-            alert('produto editado com sucesso');
+            this.$editItemModal.classList.add('hidden');
+            this.$prodAddSuccess.textContent = "Product successfully edited"
+            this.$prodAddSuccess.classList.add('success-active');
+
+            setTimeout(() => {
+              this.$prodAddSuccess.classList.remove('success-active');
+            }, 2000);
           } else {
             alert('Ops, algo de errado, tente novamente');
           };
         });
-      
-        this.$editItemModal.classList.add('hidden');
-        this.$editItemModal.classList.remove('active-modal');
     },
-
   },
 };
 
@@ -188,8 +195,15 @@ const Click_Events = {
         }).then(res => res.json())
           .then(data => {
             if (data.message === 'success') {
+              
+              Main.$prodAddSuccess.textContent = "Product removed with success"
+              Main.$prodAddSuccess.classList.add('success-active');
+              
+              setTimeout(() => {
+                Main.$prodAddSuccess.classList.remove('success-active');
+              }, 2000);
+              
               Main.getData();
-              alert('Cadastro removid com sucesso');
             } else {
               alert('Ops, ocorreu um erro');
             };

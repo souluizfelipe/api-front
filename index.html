@@ -10,51 +10,63 @@
 
 </head>
 <body>
-  <h1>Products</h1>
-  <hr>
-  <h2>Products list</h2>
-  <ul class="product-list"></ul>
-  <hr>
-  <h2>Add product</h2>
-  <form id="addForm">
-    <div>
-      <label for="name">Name: </label>
-      <input type="text" name="name" id="name">
-    </div>
-    <div>
-      <label for="brand">Brand: </label>
-      <input type="text" name="brand" id="brand">
-    </div>
-    <div>
-      <label for="price">Price: </label>
-      <input type="text" name="price" id="price">
-    </div>
-    <div>
-      <button type="submit">Save</button>
-    </div>
-  </form>
+  <header class="main-header">
+    <h1>My API Products</h1>
+  </header>
+  <section class="product-section">
+    <h2 class="section-title">Products list</h2>
+    <ul class="product-list"></ul>
+  </section>
   
-  <div class="hidden" id='edit-section'>
-    <h2>Edit product</h2>
-  <form id="editForm">
-    <input type="hidden" name="id">
-    <div>
-      <label for="name">Name: </label>
-      <input type="text" name="name" id="name">
+  <div class="modal-wrapper hidden">
+    <div class="product-modal">
+      <form id="addForm" >
+        <h2 class="section-title">Add product</h2>
+        <div class="input-wrapper">
+          <label for="name">Name: </label>
+          <input type="text" name="name" id="name" required>
+        </div>
+        <div class="input-wrapper">
+          <label for="brand">Brand: </label>
+          <input type="text" name="brand" id="brand" required>
+        </div>
+        <div class="input-wrapper">
+          <label for="price">Price: </label>
+          <input type="text" name="price" id="price" required>
+        </div>
+        <div>
+          <button type="submit">Save</button>
+        </div>
+      </form>
     </div>
-    <div>
-      <label for="brand">Brand: </label>
-      <input type="text" name="brand" id="brand">
-    </div>
-    <div>
-      <label for="price">Price: </label>
-      <input type="text" name="price" id="price">
-    </div>
-    <div>
-      <button type="submit">Save</button>
-    </div>
-  </form>
   </div>
+
+  <div class="modal-wrapper hidden">
+    <div id='edit-section' class="product-modal">
+      <form id="editForm">
+      <h2 class="section-title">Edit product</h2>
+      <input type="hidden" name="id">
+      <div class="input-wrapper">
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" required>
+      </div>
+      <div class="input-wrapper">
+        <label for="brand">Brand: </label>
+        <input type="text" name="brand" id="brand" required>
+      </div>
+      <div class="input-wrapper">
+        <label for="price">Price: </label>
+        <input type="text" name="price" id="price" required>
+      </div>
+      <div>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+    </div>
+  </div>
+  <a href="#" class="add-product-btn">
+    +
+  </a>
   
   <script src="js/main.js"></script>
 </body>
